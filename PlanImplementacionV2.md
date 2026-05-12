@@ -67,6 +67,66 @@
 | Dev | `flutter_lints`, `mockito` | Linting avanzado y pruebas unitarias |
 
 ---
+# 📦 Estructura de Colecciones para Firebase Firestore
+*(Nota técnica: Firestore utiliza **colecciones y documentos** en lugar de tablas SQL. A continuación se mapea tu requerimiento al modelo nativo de Firestore, manteniendo los campos solicitados y añadiendo notas de implementación para seguridad y escalabilidad.)*
+
+---
+
+## 🧸 Colección: `juguetes`
+| Campo | Tipo de Dato | Descripción / Notas |
+|-------|--------------|---------------------|
+| `documentId` | String (Auto-generado por Firestore) | Identificador interno del documento. No requiere asignación manual. |
+| `nombre` | String | Nombre comercial del juguete. |
+| `marca` | String | Fabricante o franquicia asociada. |
+| `precio` | Number (Double) | Precio en moneda local (ej. `149.90`). Se formateará en la UI con `intl`. |
+| `imagen` | String | URL pública o firmada desde Firebase Storage. |
+
+---
+
+## 🗿 Colección: `estatuas`
+| Campo | Tipo de Dato | Descripción / Notas |
+|-------|--------------|---------------------|
+| `documentId` | String (Auto-generado) | ID interno del documento. |
+| `nombre` | String | Nombre descriptivo de la estatua. |
+| `marca` | String | Estudio o fabricante. |
+| `precio` | Number (Double) | Valor monetario. |
+| `imagen` | String | URL de la imagen principal en Storage. |
+
+---
+
+## 👕 Colección: `ropa`
+| Campo | Tipo de Dato | Descripción / Notas |
+|-------|--------------|---------------------|
+| `documentId` | String (Auto-generado) | ID interno del documento. |
+| `nombre` | String | Nombre de la prenda (ej. "Camiseta T-Rex Vintage"). |
+| `marca` | String | Marca o diseñador. |
+| `precio` | Number (Double) | Precio de venta. |
+| `imagen` | String | URL de la imagen en Storage. |
+| `talla_disponible` | List<String> | Ej. `["S", "M", "L", "XL"]`. |
+
+---
+
+## 🎁 Colección: `promocionales`
+| Campo | Tipo de Dato | Descripción / Notas |
+|-------|--------------|---------------------|
+| `documentId` | String (Auto-generado) | ID interno del documento. |
+| `nombre` | String | Nombre del artículo promocional. |
+| `marca` | String | Marca o colección asociada. |
+| `precio` | Number (Double) | Precio con descuento aplicado. |
+| `imagen` | String | URL en Firebase Storage. |
+
+---
+
+## 👤 Colección: `usuarios`
+| Campo | Tipo de Dato | Descripción / Notas |
+|-------|--------------|---------------------|
+| `uid` | String (Clave del documento) | **Se obtiene directamente de Firebase Authentication**. No se recomienda usar un ID manual. |
+| `nombre_usuario` | String | Nombre visible en la app. |
+| `email` | String | Correo electrónico usado para el login. |
+| `contraseña_encriptada` | ❌ *No almacenar en Firestore* | ⚠️ **Nota de seguridad crítica** (ver abajo). |
+| `rol` | String | `"user"` o `"admin"`. Determina acceso a rutas administrativas. |
+
+---
 
 ## 6. 📁 Estructura de Carpetas del Proyecto
 ```
@@ -177,3 +237,4 @@ qué herramientas se requieren, ui, ux dependencias, login autentificación usua
 mostrarás la estructura de carpetas del proyecto para comprender cómo los archivos estarán asignados en el proyecto final.
 para las páginas tendremos un inicio de sesión y registro al comienzo, al iniciar sesión tendremos un inicio explicativo, tendremos las páginas para juguetes, estatuas, ropa y promocionales, una página de conocernos con una explicación detallada de la tienda, tendremos un usuario admin que tendrá acceso a una página de administrador donde podrá agregar, editar y borrar los productos de la página.
 No crearás código solo será el paso a paso para el desarrollo de la aplicación
+agregando las tablas con los campos de juguetes, estatuas, ropa y promocionales teniendo en cuenta que los campos serán ID, nombre, marca, precio, imagen, y la tabla de los usuarios que será ID, nombre de usuario, contraseña encriptada 
