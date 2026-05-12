@@ -198,5 +198,4 @@
 - Documentar las reglas de Firestore y los índices compuestos en un archivo `FIRESTORE_RULES.md`.
 - Planificar una fase 2: pasarela de pago real (Stripe/MercadoPago), panel admin web, notificaciones push (FCM).
 
----
-🦖 *Este plan está listo para ser ejecutado paso a paso. Cuando confirmes que deseas avanzar a la siguiente fase (ej: estructura de archivos detallada, wireframes, o configuración inicial de `main.dart`), te guiaré con instrucciones específicas sin saltar a implementación de código prematura.*
+
