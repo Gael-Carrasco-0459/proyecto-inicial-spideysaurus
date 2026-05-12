@@ -123,7 +123,7 @@
 | `uid` | String (Clave del documento) | **Se obtiene directamente de Firebase Authentication**. No se recomienda usar un ID manual. |
 | `nombre_usuario` | String | Nombre visible en la app. |
 | `email` | String | Correo electrónico usado para el login. |
-| `contraseña_encriptada` | ❌ *No almacenar en Firestore* | ⚠️ **Nota de seguridad crítica** (ver abajo). |
+| `contraseña_encriptada` | ❌ *No almacenar en Firestore* | ⚠️ **Nota de seguridad crítica** |
 | `rol` | String | `"user"` o `"admin"`. Determina acceso a rutas administrativas. |
 
 ---
